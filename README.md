@@ -1,96 +1,126 @@
-# 🧠 Recomendador Inteligente de Comercios - Sabaneta
 
-Este proyecto es una plataforma web basada en Django + IA, que permite a ciudadanos y visitantes encontrar fácilmente comercios y servicios en el municipio de Sabaneta, Antioquia.
+# ¿Qué tienes para mí, Sabaneta?
 
----
-
-## 🚀 Funcionalidades
-
-- Modelo de recomendación usando `TF-IDF` y `scikit-learn`.
-- Formulario para registrar comercios con ubicación y redes sociales.
-- Base de datos en Excel como fuente inicial.
-- Interfaz sencilla basada en plantillas HTML.
-- Código limpio y modular con buenas prácticas Django.
-
-## Requisitos
-Python 3.10 o superior
-pip
-Entorno virtual (venv)
-Django 5.2
-Pillow (para carga de imágenes)
+**¿Qué tienes para mí, Sabaneta?** es una aplicación web desarrollada con Django que permite a los usuarios descubrir negocios locales del municipio de Sabaneta según sus necesidades específicas. Además, permite a los comerciantes registrar sus negocios proporcionando información clave como sector, ubicación y redes sociales.
 
 ---
 
-## 🛠️ Instalación rápida
+## 🚀 Características
 
-### 1. descomprime el proyecto
+- 🔍 Búsqueda de negocios por palabra clave o tipo de producto/servicio.
+- 🏪 Registro de nuevos comercios con información relevante.
+- 🧠 Recomendación de empresas basada en aprendizaje automático (scikit-learn).
+- 📍 Clasificación por sectores y subsectores económicos.
+- 🌐 Integración con redes sociales (Facebook e Instagram).
+
+---
+
+## 🛠 Tecnologías utilizadas
+
+- **Python**: 3.13.2
+- **Django**: >= 4.2
+- **Pandas**: 2.0
+- **scikit-learn**: 1.2
+- **Openpyxl**: 3.1
+- **Pillow**: 10.0
+- **spaCy**: 3.8
+
+---
+
+## 📂 Estructura del proyecto
+
+recomendador_sabaneta/
+│
+├── backend/
+│ ├── manage.py
+│ ├── settings.py
+│ ├── urls.py
+│ ├── wsgi.py
+│ ├── apps/
+│ │ └── recomendador/
+│ │ ├── models.py
+│ │ ├── forms.py
+│ │ ├── views.py
+│ │ ├── urls.py
+│ │ └── recommender.py
+│ └── pycache/
+├── venv/
+│ └── Scripts/
+│ └── Activate.ps1
+└── requirements.txt
+
+yaml
+Copiar
+Editar
+
+---
+
+## 📝 Página de Registro de Comercios
+
+La app incluye una interfaz accesible desde:
+
+- **URL local**: [http://127.0.0.1:8000/registro/](http://127.0.0.1:8000/registro/)
+- **Funcionalidad**:
+  - Registro de nuevos negocios en el sistema.
+  - Campos solicitados: nombre, sector, subsector, dirección, links de Facebook e Instagram.
+  - Validación automática de URLs.
+  - Almacenamiento en base de datos para usar en consultas y recomendaciones.
+
+---
+
+## ⚙️ Instalación y ejecución
+
+Sigue estos pasos para ejecutar el proyecto localmente:
+
+### 1. Clonar el repositorio
 
 ```bash
-cd ruta/del/proyecto 
-Para mi pc: cd 1\Desktop\Carolina Ospina\TalentTech\recomendador_sabaneta
+git clone https://github.com/afra7547/Recomendador-Sabaneta.git
+cd Recomendador-Sabaneta/recomendador_sabaneta/backend
 
-2. Clona el repositorio
-
+2. Crear y activar entorno virtual
 bash
-git clone https://github.com/krito1020/recomendador-sabaneta.git
-* nota:Si ya has clonado el repositorio anteriormente en ese PC, NO necesitas volver a hacer git clone.
-Y desde ahí puedes continuar con:
-
-Activar el entorno virtual
-Instalar dependencias (si es necesario)
-Migraciones
-Correr el servidor
-
-
-3. Crea y activa un entorno virtual
-bash
+Copiar
+Editar
+# Windows
 python -m venv venv
-venv\\Scripts\\activate
+venv\Scripts\activate
 
-4. Instala las dependencias
+# Linux/Mac
+python3 -m venv venv
+source venv/bin/activate
+
+3. Instalar dependencias
 bash
+Copiar
+Editar
 pip install -r requirements.txt
-#**Nota:** Este proyecto utiliza `ImageField`, por lo tanto es necesario instalar `Pillow`: Pero esta dentro de los requerimientos
-Para revisar si quedo bien instalado escribir
-pip freeze
 
-⚙️ Estructura del proyecto
-csharp
-recomendador_sabaneta_full/
-├── backend/
-│   ├── manage.py
-│   ├── settings.py
-│   ├── urls.py
-│   └── apps/
-│       └── recomendador/
-│           ├── recommender.py
-│           ├── models.py
-│           ├── forms.py
-│           ├── views.py
-│           ├── urls.py
-│           └── templates/
-│               ├── base.html
-│               ├── index.html
-│               └── registro.html
-├── data/
-│   └── base_actualizada.xlsx   # Asegúrate de colocar tu base real aquí
-├── requirements.txt
-├── MANUAL_USUARIO.md
-└── README.md
+4. Entrar a la carpeta backend en powershell
+- CopiarEditar
+cd ruta backend
 
+Ejemplo: C:\Users\Soportedrai\Documents\recomendador_sabaneta\recomendador_sabaneta\backend
 
-▶️ Uso del sistema
-Ejecutar el servidor
+5. Preparar la base de datos
 bash
-cd backend
-python manage.py makemigrations recomendador 
+Copiar
+Editar
+python manage.py makemigrations
 python manage.py migrate
+
+6. Ejecutar el servidor
+bash
+Copiar
+Editar
 python manage.py runserver
-Acceder a la app
-🔍 Página principal: http://127.0.0.1:8000/
+Accede a la app en tu navegador: http://127.0.0.1:8000 y http://127.0.0.1:8000/registro/
 
-📝 Registrar comercio: http://127.0.0.1:8000/registro/
+👨‍💻 Autor
+Andrés Felipe Rodríguez Agudelo
 
-📚 Manual de Usuario
-Consulta el archivo MANUAL_USUARIO.md incluido en el proyecto.
+Proyecto con fines sociales y educativos para promover el comercio local en Sabaneta, Antioquia (Colombia).
+
+📄 Licencia
+Este proyecto es de uso libre bajo licencia MIT. Puedes modificarlo, distribuirlo y adaptarlo con fines académicos, sociales o comunitarios.
 
