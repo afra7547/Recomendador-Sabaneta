@@ -78,19 +78,23 @@ Sigue estos pasos para ejecutar el proyecto localmente:
 git clone https://github.com/afra7547/Recomendador-Sabaneta.git
 cd Recomendador-Sabaneta/recomendador_sabaneta/backend
 
-2. Crear y activar entorno virtual
+2. Abrir PowerShell y navegar a la carpeta del proyecto
+
+cd "C:\Users\Pepito\Desktop\recomendador-sabaneta"
+
+3. Crear y activar entorno virtual
 bash
 Copiar
 Editar
 # Windows
 python -m venv venv
-venv\Scripts\activate
+venv\Scripts\Activate.ps1
 
 # Linux/Mac
 python3 -m venv venv
-source venv/bin/activate
+source venv/bin/Activate.ps1
 
-3. Instalar dependencias
+4. Instalar dependencias
 bash
 Copiar
 Editar
@@ -106,7 +110,7 @@ Ejemplo: C:\Users\Soportedrai\Documents\recomendador_sabaneta\recomendador_saban
 bash
 Copiar
 Editar
-python manage.py makemigrations
+python manage.py makemigrations recomendador
 python manage.py migrate
 
 6. Ejecutar el servidor
